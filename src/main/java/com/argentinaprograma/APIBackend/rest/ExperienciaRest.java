@@ -16,29 +16,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin (origins = "https://frontargentinaprograma.web.app/")
-@RequestMapping("api/experiencia")
+@CrossOrigin (origins = "https://frontargentinaprograma.web.app")
+@RequestMapping("/api/experiencia/")
 public class ExperienciaRest {
 
     @Autowired
     private ExperienciaController experienciaController;
 // VER TODOS
-    @GetMapping("/listar")
+    @GetMapping("listar")
     public List<Experiencia> listar(){
         return experienciaController.findAll();
     } 
 //GUARDAR
-    @PostMapping("/nueva")
+    @PostMapping("nueva")
     public Experiencia saveExperiencia(@RequestBody Experiencia experiencia){
         return experienciaController.save(experiencia);
     }
 //BUSCAR POR ID
-    @GetMapping("/buscar/{id}")
+    @GetMapping("buscar/{id}")
     public Optional<Experiencia> findById(@PathVariable("id") Long id){
         return experienciaController.findById(id);
     }
 //BORRAR POR ID
-    @DeleteMapping("/borrar/{id}")
+    @DeleteMapping("borrar/{id}")
     public String deleteById(@PathVariable("id") Long id){
         experienciaController.deleteById(id);
         return "Se eliminó la experiencia con ID:"+" "+id+" "+"corractamente.";
